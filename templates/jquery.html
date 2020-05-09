@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>StockAnalyzer</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+        <script>
+            $(document).ready(function(){
+                $("#btn1").click(function(){
+                    $("#para1").text("button 1 clicked");
+                });
+                $("#btn2").click(function(){
+                    $("#para2").html("<b>button 2 click with html</b>");
+                });
+                $("#btn3").click(function(){
+                    $("#input").val("button 3 clicked");
+                });
+            });
+        </script>
+        <link rel = "icon" href =  
+        "/static/images/images.png" 
+                type = "image/x-icon"> 
+    </head>
+
+    <body>
+        <input type='button' id='btn1' value='Button1'>
+        <input type='button' id='btn2' value='Button2'>
+        <input type='button' id='btn3' value='Button3'>
+        <p id='para1'>this is para 1</p>
+        <p id='para2'>this is para 2</p>
+        <p>input field : <input type='text' id='input' value="input"></p>
+    </body>
+</html>
