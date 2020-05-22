@@ -14,9 +14,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top" style="width: 100%; overflow-x: hidden;">
-                <a class="navbar-brand" href="/">
-                    <img src="/static/images/logo.jpg" style="width:40px;">
-                </a>
+                
                 <ul class="navbar-nav">
                     <li class="nav-item active">
                         <a class="nav-link" href="/">home</a>
@@ -27,9 +25,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/portfolio">analysis</a>
                     </li>
-                    <li class="nav-item">
-                            <a class="nav-link" href="/blog">blog here</a>
-                    </li>
+                    {% if(is_Author == 1) %}
+                        <li class="nav-item">
+                                <a class="nav-link" href="/blog">write blog</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                                <a class="nav-link" href="/render_blog">read blog</a>
+                        </li>
+                    {% endif %}
                 </ul>
             
                 <ul class="navbar-nav ml-auto" >

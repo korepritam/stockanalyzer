@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>StockAnalyzer</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.15.2/URI.min.js"></script>
+        <link rel = "icon" href =  
+            "/static/images/images.png" 
+                    type = "image/x-icon">        
+        <script>
+                $(document).ready(function(){
+                    $("#dynamicLink").click(function(){                       
+                        var company=document.getElementById('company').value;
+                        var uid=document.getElementById('uid').value;
+                        var l = document.getElementById('dynamicLink');  
+                        var uri = URI(l.href);
+                        var qs = uri.query(true);
+                        qs.company = company;
+                        qs.uid=uid
+                        uri.query(qs);
+                        l.href = uri;
+                    });
+                });
+        </script>
+    </head>
+
+    <body>
+        <div class="jumbotron text-center pt-3 my-3 sticky-top" style="margin-bottom:0; color: blanchedalmond; background-color: black;">
+            <h1>StockAnalyzer</h1>
+            <p>Machine Learning tool for Stock Market Analysis</p>
+        
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
+               
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">about</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/api">API</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/company">company</a>
+                    </li>
+                </ul>
+
+                  <ul class="navbar-nav ml-auto" >
+                    <li><a href="/register" class="nav-link ">Sign Up</a></li>
+                    <li><a href="/login" class="nav-link"> Login</a></li>
+                  </ul>
+
+            </nav>
+        </div>
+        <div class="container-fluid">
+                <a href="/api/v1/resources/books/all" target="_blank">Calling All Articles</a><br>
+                <label>Company</label>
+                <input id="company" type="text">
+                <label>UID</label>
+                <input id="uid" type="number">
+                <a id="dynamicLink" href="/api/v1/resources/books?company=&uid=" target="_blank">Calling Specific Articles</a>          
+        </div>
+    </body>
+
+
+
+</html>

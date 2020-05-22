@@ -28,9 +28,7 @@
             <p>Machine Learning tool for Stock Market Analysis</p>
         
             <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
-                <a class="navbar-brand" href="/">
-                    <img src="/static/images/logo.jpg" style="width:40px;">
-                </a>
+               
                 <ul class="navbar-nav">
                     <li class="nav-item active">
                         <a class="nav-link" href="/">home</a>
@@ -39,14 +37,19 @@
                         <a class="nav-link" href="/about">about</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/portfolio">portfolio</a>
+                        <a class="nav-link" href="/api">API</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/company">company</a>
                     </li>
                     {% if session['is_Author']==1 %}
                         <li class="nav-item">
-                            <a class="nav-link" href="/blog">Blog here</a>
+                            <a class="nav-link" href="/blog">Write Article</a>
+                        </li>
+
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/render_blog">Read Article</a>
                         </li>
                     {% endif %}
                 </ul>

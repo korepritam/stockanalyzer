@@ -20,6 +20,7 @@
         $(document).ready(function(){
             $("#button").click(function(){
                     var id = $('#newsid').val();
+                    var company = $('#company').val();
                     var title=$('#title').val();
                     var content=$('#content').val();
                     //data={'title':title,'content':content};
@@ -28,7 +29,7 @@
                     $.ajax({
                     type:'POST',
                     url:"http://localhost:5000/postnews" ,
-                    data : {'id':id,'title':title,'content':content},
+                    data : {'id':id,'company':company,'title':title,'content':content},
                     success: function(){
                             var html='<div class="card">';
                             html+='<div class="card-header">';
@@ -41,6 +42,7 @@
                     }
                     });
                     $('#newsid').val('');
+                    $('#company').val('');
                     $('#title').val('');
                     $('#content').val('');
                 });
@@ -146,6 +148,11 @@
                     <form class="form-signin">
                         <input type="hidden" id="newsid" name="newsid">
                         <div class="form-label-group">
+                            <label for="company">Company</label>
+                            <textarea class="form-control" rows="1" id="company" name="company" placeholder="company"></textarea>
+                        </div>
+                        <br>
+                        <div class="form-label-group">
                             <label for="title">Title</label>
                             <textarea class="form-control" rows="2" id="title" name="title" placeholder="title"></textarea>
                         </div>
@@ -167,7 +174,7 @@
                                 <div class="card-header">
                                     <b hidden id="number-{{news[i][0]}}" style="color:black;">{{news[i][0]}}</b>
                                     <a id="title-{{news[i][0]}}" class="card-link" data-toggle="collapse" href="#collapse-{{news[i][0]}}">
-                                        <b>{{news[i][1]}}</b> 
+                                        <b>{{news[i][2]}}</b> 
                                     </a>
                                             <button id="btndelete" class="btn btn-danger" data-id={{news[i][0]}} onclick="ConfirmDelete(this)" style="float:right;margin-right:8px;">Delete</button>
                                             <button id="btnedit" class="btn btn-primary" data-id={{news[i][0]}} onclick="Edit(this)" style="float:right;margin-right:16px;">Edit</button>
@@ -221,7 +228,7 @@
                                 </div>
                                 <div id="collapse-{{news[i][0]}}" class="collapse" data-parent="#accordion">
                                     <div id="content-{{news[i][0]}}" class="card-body" style="background-color: crimson; color: white;">
-                                        {{news[i][2]}}
+                                        {{news[i][3]}}
                                     </div>
                                 </div>
                             </div><br>

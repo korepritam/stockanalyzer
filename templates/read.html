@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>StockAnalyser</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <style>
+            #colour{
+                color: blanchedalmond;
+            }
+        </style>
+        <link rel = "icon" href =  
+        "/static/images/images.png" 
+                type = "image/x-icon">
+        
+        <script>
+        $(document).ready(function(){
+            $("#button").click(function(){
+                    var company = $('#company').val();
+                    $.ajax({
+                    type:'POST',
+                    url:"http://localhost:5000/read_blog" ,
+                    data : {'company':company},
+                    success: function(data){
+                        // alert(data);
+                        var employee_data ='';
+                        $.each(data,function(key,value){
+                            // console.log(key+":"+value);
+                            employee_data += '<tr>';
+                            employee_data += '<td>'+key+'</td>';
+                            employee_data += '<td>' +value +'</td>';
+                            employee_data += '</tr>';
+                        });
+                        // alert(employee_data);
+                       $('#dataTable').append(employee_data);
+                    }
+                    });
+                });
+        });
+        </script>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark" style="width: 100%; overflow-x: hidden;">
+            <a class="navbar-brand" href="/">
+                <img src="/static/images/logo.jpg" style="width:40px;">
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">about website</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/portfolio">analysis</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="/company">company</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto" >
+                <li><a href="/logout" class="nav-link"> Logout</a></li>
+            </ul>
+        </nav>
+
+        <div class="row jumbotron bg-dark my-3 pt-3 " id="colour"">
+                    <h4>Search Company</h4><br>
+                    <form class="form-signin">              
+                        <div class="form-label-group">
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <br>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" id="button" type="button">Search</button>   
+                    </form>
+        </div>
+
+        <div class="container">  
+            <div class="table-responsive">
+                <table id="dataTable" class="table table-bordered table-hover table-dark">  
+                    <thead class="thead-light">
+                        <tr>  
+                            <th>Title</th>  
+                            <th>Content</th>  
+                        </tr>  
+                    </thead>
+                </table> 
+            </div>
+        </div>
+    </body>
+</html>
