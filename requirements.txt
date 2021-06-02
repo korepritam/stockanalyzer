@@ -12,6 +12,6 @@ mysqlclient==1.4.6
 passlib==1.7.2
 Quandl==3.5.0
 requests==2.23.0
-urllib3==1.25.9
+urllib3==1.26.5
 Werkzeug==1.0.1
 WTForms==2.3.1
